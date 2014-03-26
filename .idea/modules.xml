@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EvolutionOfDance/EvolutionOfDance.iml" filepath="$PROJECT_DIR$/EvolutionOfDance/EvolutionOfDance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhobosVideos.iml" filepath="$PROJECT_DIR$/PhobosVideos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhobosVideosLibrary/PhobosVideosLibrary.iml" filepath="$PROJECT_DIR$/PhobosVideosLibrary/PhobosVideosLibrary.iml" />
+    </modules>
+  </component>
+</project>
+
