@@ -1,8 +1,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    tools:context="com.phobos.phobosvideos.phobosvideoslibrary.VideoPlayback">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/relativeLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                tools:context="com.phobos.phobosvideos.phobosvideoslibrary.VideoPlayback">
+
+    <ImageView
+            android:id="@+id/splash_image"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            />
 
     <VideoView
             android:id="@+id/videoViewer"
@@ -13,7 +20,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:gravity="center" >
+            android:gravity="center">
     </VideoView>
 
 </RelativeLayout>

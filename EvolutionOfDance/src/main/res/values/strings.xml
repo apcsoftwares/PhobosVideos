@@ -3,4 +3,9 @@
 
     <string name="app_name">Evolution of Dance</string>
 
+    <string name="email_report_body">Hello Phobos, \nI would like to report a problem in Evolution of Dance&#8230;</string>
+
+    <string name="share_app">Hi! I would like to share Evolution of Dance app with you. Download from the Google Play Store </string>
+
+
 </resources>

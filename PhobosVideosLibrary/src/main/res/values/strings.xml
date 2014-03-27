@@ -2,7 +2,21 @@
 <resources>
 
     <string name="app_name">PhobosVideos</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="link_rate_app">http://goo.gl/ZCxoI</string>
+    <string name="link_more_apps">http://goo.gl/ZCxoI</string>
+    <string name="share">Share</string>
+
+
+    <string name="email_report_subject">Phobos App Problem Report</string>
+    <string name="email_report_body">Hello Phobos, \nI would like to report a problem&#8230;</string>
+    <string name="email_report_title">Report a problem&#8230;</string>
+    <string name="email_contact_subject">Phobos App comments</string>
+    <string name="email_contact_body">Hello Phobos, \n\n&#8230;</string>
+    <string name="email_contact_title">Contact Phobos&#8230;</string>
+    <string name="email_report_to">apcsoftwares@gmail.com</string>
+
+    <string name="share_app">Hi! I would like to share this app with you. Download from the Google Play Store </string>
+
 
 </resources>

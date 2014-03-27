@@ -4,21 +4,28 @@
     tools:context="com.phobos.phobosvideos.phobosvideoslibrary.VideoPlayback" >
 
     <item
-            android:id="@+id/share"
+            android:id="@+id/menu_share_app"
             android:title="Share"
             android:orderInCategory="95"
             android:showAsAction="withText"/>
 
     <item
-            android:id="@+id/rate_app"
+            android:id="@+id/menu_rate_app"
             android:title="Rate App"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
     <item
-            android:id="@+id/more_apps"
+            android:id="@+id/menu_more_apps"
             android:title="More Apps"
             android:orderInCategory="110"
+            android:showAsAction="never"
+            />
+
+    <item
+            android:id="@+id/menu_report_problem"
+            android:title="Report Problem"
+            android:orderInCategory="120"
             android:showAsAction="never"
             />
 </menu>
