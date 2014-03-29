@@ -4,6 +4,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,30 +16,35 @@ import android.widget.VideoView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
 
-public class VideoPlayback extends ActionBarActivity {
+public class VideoPlayback extends ActionBarActivity
+{
 
 
 	public static final String MOTO_G = "21865E81A08194C4F1FD1FB87CF75E6E";
 	//public static final String AD_UNIT_ID = "ca-app-pub-8010918457888868/4335067632";
 	public static String AD_UNIT_ID;
 	private AdView adView;
+	private InterstitialAd interstitialAd;
 	private VideoView mVideoView = null;
 	private MediaController mMediaController = null;
+	private ImageView imageView = null;
 	//private String videoName = null;
 
 	private String appPackageName; // getPackageName() from Context or Activity object
 
 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_playback);
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_video_playback);
 		//initialize("");
 		// Get a reference to the VideoView
 		appPackageName = getPackageName();
 
-		final ImageView imageView = (ImageView) findViewById(R.id.splash_image);
+		imageView = (ImageView) findViewById(R.id.splash_image);
 
 		imageView.setImageResource(R.drawable.play_image);
 
@@ -58,10 +64,12 @@ public class VideoPlayback extends ActionBarActivity {
 
 		mVideoView.requestFocus();
 		// Add an OnPreparedListener to enable the MediaController once the video is ready
-		mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+		mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener()
+		{
 
 			@Override
-			public void onPrepared(MediaPlayer mp) {
+			public void onPrepared(MediaPlayer mp)
+			{
 				mMediaController.setEnabled(true);
 				//mVideoView.start();
 			}
@@ -76,6 +84,7 @@ public class VideoPlayback extends ActionBarActivity {
 				imageView.setVisibility(View.GONE);
 				mVideoView.setVisibility(View.VISIBLE);
 				mVideoView.start();
+				//mVideoView.st
 			}
 		});
 
@@ -98,26 +107,61 @@ public class VideoPlayback extends ActionBarActivity {
 
 		// Start loading the ad in the background.
 		adView.loadAd(adRequest);
+
+
+		// Create the interstitial.
+		interstitialAd = new InterstitialAd(this);
+		interstitialAd.setAdUnitId(AD_UNIT_ID);
+
+		// Create ad request.
+		//AdRequest adRequest = new AdRequest.Builder().build();
+
+		// Begin loading your interstitial.
+		interstitialAd.loadAd(adRequest);
+	}
+
+	// Invoke displayInterstitial() when you are ready to display an interstitial.
+	private void displayInterstitial()
+	{
+		if (interstitialAd.isLoaded())
+		{
+			interstitialAd.show();
+		}
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event)
+	{
+		if ((keyCode == KeyEvent.KEYCODE_BACK))
+		{
+			//Log.d(this.getClass().getName(), "back button pressed");
+			displayInterstitial();
+			finish();
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 	public void setVideoID(int videoID)
 	{
-		mVideoView
-				.setVideoURI(Uri.parse("android.resource://" + getPackageName() +
-						"/" + videoID));
+		mVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() +
+				"/" + videoID));
 	}
 
 	@Override
 	protected void onPause()
 	{
-		if (mVideoView != null && mVideoView.isPlaying()) {
+		if (mVideoView != null && mVideoView.isPlaying())
+		{
+			//mVideoView.pause();
 			mVideoView.stopPlayback();
-			mVideoView = null;
+			//mVideoView = null;
 		}
 		if (adView != null)
 		{
 			adView.pause();
 		}
+		if (mVideoView != null) mVideoView.setVisibility(View.GONE);
+		if (imageView != null) imageView.setVisibility(View.VISIBLE);
 		super.onPause();
 	}
 
@@ -129,6 +173,7 @@ public class VideoPlayback extends ActionBarActivity {
 		{
 			adView.resume();
 		}
+
 	}
 
 	@Override
@@ -143,19 +188,21 @@ public class VideoPlayback extends ActionBarActivity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.video_playback, menu);
-        return true;
-    }
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.video_playback, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
 
 		if (id == R.id.menu_share_app)
 		{

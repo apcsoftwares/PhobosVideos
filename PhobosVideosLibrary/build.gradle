@@ -3,7 +3,6 @@ apply plugin: 'android-library'
 android {
     compileSdkVersion 18
     buildToolsVersion '19.0.1'
-
     defaultConfig {
         minSdkVersion 10
         targetSdkVersion 19
@@ -12,10 +11,12 @@ android {
     }
     buildTypes {
         release {
+            debuggable false
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+
 }
 
 dependencies {

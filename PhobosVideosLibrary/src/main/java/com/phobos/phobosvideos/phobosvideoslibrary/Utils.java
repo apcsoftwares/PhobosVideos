@@ -57,20 +57,5 @@ public class Utils
 		{
 			Toast.makeText(context, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
 		}
-		/*try
-		{
-			Intent send = new Intent(Intent.ACTION_SENDTO);
-			String uriText = "mailto:" + Uri.encode("apcsoftwares@gmail.com") + "?subject="
-					+ Uri.encode(subject) + "&body=" + Uri.encode(body);
-			Uri uri = Uri.parse(uriText);
-
-			send.setData(uri);
-			context.startActivity(Intent.createChooser(send,
-					Uri.encode(title)));
-		}
-		catch (Exception e)
-		{
-			// showAlert();
-		}*/
 	}
 }
